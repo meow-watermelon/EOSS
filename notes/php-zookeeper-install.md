@@ -1,10 +1,12 @@
 The following installation steps are verified based on the following components version:
 
->PHP: 7.4.16
->PHP Pear: 1.10.12
->ZooKeeper Client: 3.4.14
->PHP ZooKeeper: Master Branch
->OS: Fedora 33
+```
+PHP: 7.4.16
+PHP Pear: 1.10.12
+ZooKeeper Client: 3.4.14
+PHP ZooKeeper: Master Branch
+OS: Fedora 33
+```
 
 Installation Steps
 ---------------------
@@ -33,8 +35,10 @@ then run `make` to build the PHP ZooKeeper module.
 
 9. Once the module is created it's located at `/path/to/php-zookeeper/modules/zookeeper.so`. Copy this module to `/usr/lib64/php/modules` then edit `/etc/php.ini` to add following lines:
 
->; zookeeper
->extension=zookeeper.so
+```
+; zookeeper
+extension=zookeeper.so
+```
 
 10. Run the following command to verify the module is installed:
 
