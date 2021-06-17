@@ -6,7 +6,11 @@ class Version {
 
     // encode an object version string
     public function encode($object_name, $version_salt, $version_string) {
-        $pre_version_string = implode(':', array($object_name, $version_salt, $version_string));
+        if (is_null($version_string)) {
+            $pre_version_string = $object_name;
+        } else {
+            $pre_version_string = implode(':', array($object_name, $version_salt, $version_string));
+        }
         $encode_version_string = base64_encode($pre_version_string);
         $this->object_version_string = $encode_version_string;
 
