@@ -40,6 +40,13 @@ class MetaData {
         $object_metadata_array[6] = $eof_flag;
         $this->object_metadata = implode(':', $object_metadata_array);
     }
+
+    // get EOF flag field
+    public function get_eof_flag($object_metadata) {
+        $object_metadata_array = explode(':', $this->object_metadata);
+        $object_eof_flag = $object_metadata_array[6];
+        return $object_eof_flag;
+    }
 }
 
 ?>
