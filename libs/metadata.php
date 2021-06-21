@@ -47,6 +47,13 @@ class MetaData {
         $object_eof_flag = $object_metadata_array[6];
         return $object_eof_flag;
     }
+
+    // set the size of the object
+    public function set_size($object_size) {
+        $object_metadata_array = explode(':', $this->object_metadata);
+        $object_metadata_array[3] = $object_size;
+        $this->object_metadata = implode(':', $object_metadata_array);
+    }
 }
 
 ?>
