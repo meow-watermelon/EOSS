@@ -1,0 +1,18 @@
+@startuml
+title EOSS PUT Sequence
+
+actor User
+User -> "EOSS Service Layer": initiate object uploading
+"EOSS Service Layer" -> "EOSS Service Layer": generate object metadata
+"EOSS Service Layer" -> "ZooKeeper": set metadata with EOF flag 0
+"ZooKeeper" --> "EOSS Service Layer": response
+"EOSS Service Layer" -> "Storage": commit 1 write operation
+"Storage" --> "EOSS Service Layer": response
+"EOSS Service Layer" -> "ZooKeeper": update metadata with EOF flag 1
+"ZooKeeper" --> "EOSS Service Layer": response
+"EOSS Service Layer" -> "Storage": commit rest of data
+"Storage" --> "EOSS Service Layer": response
+"EOSS Service Layer" -> "EOSS Service Layer": close file descriptors
+"EOSS Service Layer" -> "EOSS Service Layer": close ZooKeeper connection
+"EOSS Service Layer" --> User: return HTTP 201 response code
+@enduml
