@@ -6,7 +6,7 @@
 class MetaData {
     public $object_metadata;
 
-    // initial metadata by using metadata array
+    // initialize metadata by using metadata array
     public function __construct($object_metadata_array) {
         $this->object_metadata = implode(':', $object_metadata_array);
     }
