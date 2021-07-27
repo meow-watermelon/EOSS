@@ -9,9 +9,10 @@ class Config {
 
         if (file_exists($config_file) && is_readable($config_file)) {
             $config = yaml_parse_file($config_file);
+            $this->config = $config;
+        } else {
+            throw new Exception('Unable to load the config file.');
         }
-
-        $this->config = $config;
     }
 
     // get whole config array
@@ -47,6 +48,11 @@ class Config {
     // get write buffer
     public function get_write_buffer() {
         return $this->config['write_buffer'];
+    }
+
+    // get log directory
+    public function get_logging_dir() {
+        return $this->config['logging_dir'];
     }
 
     // get safe mode flag
